@@ -12,4 +12,4 @@ jobs:
         env:
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
-          curl -fsS --max-time 300 -H "Authorization: Bearer $CRON_SECRET" https://iphone-duo-alerts.vercel.app/api/cron/check-stock -o /dev/null -w "%{http_code}\n"
+          curl -fsS --max-time 300 -H "Authorization: Bearer $CRON_SECRET" https://iphoneduofinder.com/api/cron/check-stock -o /dev/null -w "%{http_code}\n"
