@@ -9,4 +9,7 @@ jobs:
     timeout-minutes: 6
     steps:
       - name: Trigger iPhone Duo Finder stock check
-        run: curl -fsS --max-time 300 -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" https://iphone-duo-alerts.vercel.app/api/cron/check-stock -o /dev/null -w "%{http_code}\n"
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          curl -fsS --max-time 300 -H "Authorization: Bearer $CRON_SECRET" https://iphone-duo-alerts.vercel.app/api/cron/check-stock -o /dev/null -w "%{http_code}\n"
